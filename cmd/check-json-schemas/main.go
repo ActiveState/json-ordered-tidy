@@ -49,7 +49,7 @@ func main() {
 		_, err := gojsonschema.NewSchema(l)
 		if err != nil {
 			exit++
-			fmt.Fprintf(os.Stderr, "%s does not contain a valid JSON schema: %v", f, err)
+			fmt.Fprintf(os.Stderr, "%s does not contain a valid JSON schema:\n  %v\n\n", f, err)
 		}
 		if verbose {
 			fmt.Println("  ok")
