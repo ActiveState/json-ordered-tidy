@@ -9,7 +9,8 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"github.com/xeipuuv/gojsonschema"
+	"github.com/ActiveState/gojsonschema"
+	"github.com/xeipuuv/gojsonreference"
 )
 
 func main() {
@@ -41,12 +42,25 @@ func main() {
 		exitError("did not find any JSON schemas in %s", dir)
 	}
 	for _, f := range files {
+		absDir, err := filepath.Abs(filepath.Dir(f))
+		if err != nil {
+			exitError("could not turn %s into an absolute path", f)
+		}
+
 		if verbose {
 			fmt.Printf("Checking %s\n", f)
 		}
 		schema := readOrFatal(f)
 		l := gojsonschema.NewStringLoader(schema)
-		_, err := gojsonschema.NewSchema(l)
+
+		resolver := func(ref gojsonreference.JsonReference) (gojsonreference.JsonReference, error) {
+			new, err := gojsonreference.NewJsonReference(fmt.Sprintf("file:///%s/%s", absDir, ref.GetUrl().Path))
+			if err != nil {
+				return gojsonreference.JsonReference{}, err
+			}
+			return new, nil
+		}
+		_, err = gojsonschema.NewSchema(l, gojsonschema.NewSchemaParams{RefResolver: resolver})
 		if err != nil {
 			exit++
 			fmt.Fprintf(os.Stderr, "%s does not contain a valid JSON schema:\n  %v\n\n", f, err)

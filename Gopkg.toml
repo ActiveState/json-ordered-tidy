@@ -1,0 +1,11 @@
+[[constraint]]
+  branch = "reference-resolver"
+  name = "github.com/ActiveState/gojsonschema"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/xeipuuv/gojsonreference"
+
+[prune]
+  go-tests = true
+  unused-packages = true
