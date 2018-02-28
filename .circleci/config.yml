@@ -14,4 +14,4 @@ jobs:
           command: /go/src/github.com/ActiveState/check-go-files/install-deps.sh
       - run:
           name: Check Go files
-          command: ./check-go-files -all
+          command: check-go-files -all
