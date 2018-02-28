@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.9
+    working_directory: /go/src/github.com/ActiveState/check-go-files
+    steps:
+      - checkout
+      - run:
+          name: Build
+          command: go get -u github.com/ActiveState/check-go-files github.com/golang/lint/golint github.com/kisielk/errcheck github.com/golang/dep/cmd/dep
+      - run:
+          name: Check Go files
+          command: ./check-go-files -all
