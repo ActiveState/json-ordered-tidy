@@ -27,3 +27,5 @@ value.
     Show usage information.
 -indent string
     The string with which to indent JSON. Defaults to 4 spaces. (default "    ")
+-verbose
+    Be more verbose with output.
