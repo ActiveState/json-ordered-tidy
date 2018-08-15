@@ -3,15 +3,9 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.9
-    working_directory: /go/src/github.com/ActiveState/check-json-schemas
+    working_directory: /go/src/github.com/ActiveState/json-tools
     steps:
       - checkout
       - run:
-          name: Build
-          command: go get -u github.com/ActiveState/check-go-files/cmd/check-go-files
-      - run:
-          name: Install deps
-          command: /go/src/github.com/ActiveState/check-go-files/install-deps.sh
-      - run:
-          name: Check Go files
-          command: check-go-files -all
+          name: Build all code
+          command: go build -v ./...
