@@ -3,25 +3,43 @@
 
 [[projects]]
   branch = "reference-resolver"
+  digest = "1:11b2768f5fa272d0e05a206513ee9c95f1c20ecc563f2371b43d73b89c017aac"
   name = "github.com/ActiveState/gojsonschema"
   packages = ["."]
+  pruneopts = "UT"
   revision = "8f6ab0e3a0b3d90a18ca880e2a11fd369d9fe707"
 
 [[projects]]
   branch = "master"
+  digest = "1:f4e5276a3b356f4692107047fd2890f2fe534f4feeb6b1fd2f6dfbd87f1ccf54"
   name = "github.com/xeipuuv/gojsonpointer"
   packages = ["."]
+  pruneopts = "UT"
   revision = "4e3ac2762d5f479393488629ee9370b50873b3a6"
 
 [[projects]]
   branch = "master"
+  digest = "1:dc6a6c28ca45d38cfce9f7cb61681ee38c5b99ec1425339bfc1e1a7ba769c807"
   name = "github.com/xeipuuv/gojsonreference"
   packages = ["."]
+  pruneopts = "UT"
   revision = "bd5ef7bd5415a7ac448318e64f11a24cd21e594b"
+
+[[projects]]
+  branch = "master"
+  digest = "1:f222a47f16d8d622f34d22b25dab59663e916a9d680858f5224ea0e5e5ad0992"
+  name = "gitlab.com/c0b/go-ordered-json"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "49bbdab258c2e707b671515c36308ea48134970d"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "e231bca1fd0df7a4a8184fb0a00e6118dd6827f0b71964ac7be6b528361b17d0"
+  input-imports = [
+    "github.com/ActiveState/gojsonschema",
+    "github.com/xeipuuv/gojsonreference",
+    "gitlab.com/c0b/go-ordered-json",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
