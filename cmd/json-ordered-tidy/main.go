@@ -14,6 +14,7 @@ import (
 
 type tidier struct {
 	check     bool
+	verbose   bool
 	indent    string
 	extRegexp *regexp.Regexp
 	exit      int
@@ -22,6 +23,8 @@ type tidier struct {
 func main() {
 	var check bool
 	flag.BoolVar(&check, "check", false, "Run in check mode. In this mode we exit 0 if all files are already tidy, otherwise the exit status is 1.")
+	var verbose bool
+	flag.BoolVar(&verbose, "verbose", false, "Be more verbose with output.")
 	var indent string
 	flag.StringVar(&indent, "indent", "    ", "The string with which to indent JSON. Defaults to 4 spaces.")
 	var ext string
@@ -43,6 +46,7 @@ func main() {
 
 	t := tidier{
 		check:     check,
+		verbose:   verbose,
 		indent:    indent,
 		extRegexp: regexp.MustCompile(regexp.QuoteMeta(ext) + `$`),
 		exit:      0,
@@ -98,7 +102,9 @@ func (t *tidier) recurseDir(dir string) {
 		return
 	}
 
-	fmt.Fprintf(os.Stdout, "Looking in %s for JSON files\n", dir)
+	if t.verbose {
+		fmt.Fprintf(os.Stdout, "Looking in %s for JSON files\n", dir)
+	}
 
 	for _, n := range names {
 		t.handlePath(filepath.Join(dir, n))
@@ -138,9 +144,11 @@ func (t *tidier) tidy(fi os.FileInfo, file string) {
 				return
 			}
 
-			fmt.Fprintf(os.Stdout, "Tidied %s\n", file)
+			if t.verbose {
+				fmt.Fprintf(os.Stdout, "Tidied %s\n", file)
+			}
 		}
-	} else {
+	} else if t.verbose {
 		fmt.Fprintf(os.Stdout, "%s is already tidy\n", file)
 	}
 }
