@@ -9,3 +9,6 @@ jobs:
       - run:
           name: Build all code
           command: go build -v ./...
+      - run:
+          name: Test all code
+          command: go test -v ./...
