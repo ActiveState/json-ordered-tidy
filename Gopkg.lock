@@ -10,6 +10,30 @@
   revision = "8f6ab0e3a0b3d90a18ca880e2a11fd369d9fe707"
 
 [[projects]]
+  digest = "1:18752d0b95816a1b777505a97f71c7467a8445b8ffb55631a7bf779f6ba4fa83"
+  name = "github.com/autarch/testify"
+  packages = ["assert"]
+  pruneopts = "UT"
+  revision = "f35b8ab0b5a2cef36673838d662e249dd9c94686"
+  version = "v1.2.2"
+
+[[projects]]
+  digest = "1:a2c1d0e43bd3baaa071d1b9ed72c27d78169b2b269f71c105ac4ba34b1be4a39"
+  name = "github.com/davecgh/go-spew"
+  packages = ["spew"]
+  pruneopts = "UT"
+  revision = "346938d642f2ec3594ed81d874461961cd0faa76"
+  version = "v1.1.0"
+
+[[projects]]
+  digest = "1:0028cb19b2e4c3112225cd871870f2d9cf49b9b4276531f03438a88e94be86fe"
+  name = "github.com/pmezard/go-difflib"
+  packages = ["difflib"]
+  pruneopts = "UT"
+  revision = "792786c7400a136282c1664665ae0a8db921c6c2"
+  version = "v1.0.0"
+
+[[projects]]
   branch = "master"
   digest = "1:f4e5276a3b356f4692107047fd2890f2fe534f4feeb6b1fd2f6dfbd87f1ccf54"
   name = "github.com/xeipuuv/gojsonpointer"
@@ -25,21 +49,13 @@
   pruneopts = "UT"
   revision = "bd5ef7bd5415a7ac448318e64f11a24cd21e594b"
 
-[[projects]]
-  branch = "master"
-  digest = "1:f222a47f16d8d622f34d22b25dab59663e916a9d680858f5224ea0e5e5ad0992"
-  name = "gitlab.com/c0b/go-ordered-json"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "49bbdab258c2e707b671515c36308ea48134970d"
-
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
     "github.com/ActiveState/gojsonschema",
+    "github.com/autarch/testify/assert",
     "github.com/xeipuuv/gojsonreference",
-    "gitlab.com/c0b/go-ordered-json",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
