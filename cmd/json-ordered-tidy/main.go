@@ -265,7 +265,7 @@ func (p *program) tidy(fi os.FileInfo, file string) {
 
 	tidied, err := jt.TidyBytes(orig)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Could not marshal JSON from OrderedMap struct: %s\n", err)
+		fmt.Fprintf(os.Stderr, "Could not tidy %s: %s\n", file, err)
 		return
 	}
 
