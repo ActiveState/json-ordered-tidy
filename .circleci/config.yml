@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.9
-    working_directory: /go/src/github.com/ActiveState/json-tools
+    working_directory: /go/src/github.com/ActiveState/json-ordered-tidy
     steps:
       - checkout
       - run:
