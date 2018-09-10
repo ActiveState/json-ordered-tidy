@@ -2,12 +2,12 @@
 
 
 [[projects]]
-  branch = "reference-resolver"
-  digest = "1:11b2768f5fa272d0e05a206513ee9c95f1c20ecc563f2371b43d73b89c017aac"
-  name = "github.com/ActiveState/gojsonschema"
-  packages = ["."]
+  branch = "master"
+  digest = "1:328e434b38544c879da6f2a0e534127333ef8dd26952297ced29ea8f1db9e127"
+  name = "github.com/ActiveState/json-tools"
+  packages = ["pkg/jsontidier"]
   pruneopts = "UT"
-  revision = "8f6ab0e3a0b3d90a18ca880e2a11fd369d9fe707"
+  revision = "5d84513903fb17aa1d4b9be0a1a882b7f6ce4a81"
 
 [[projects]]
   digest = "1:18752d0b95816a1b777505a97f71c7467a8445b8ffb55631a7bf779f6ba4fa83"
@@ -18,12 +18,12 @@
   version = "v1.2.2"
 
 [[projects]]
-  digest = "1:a2c1d0e43bd3baaa071d1b9ed72c27d78169b2b269f71c105ac4ba34b1be4a39"
+  digest = "1:ffe9824d294da03b391f44e1ae8281281b4afc1bdaa9588c9097785e3af10cec"
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
   pruneopts = "UT"
-  revision = "346938d642f2ec3594ed81d874461961cd0faa76"
-  version = "v1.1.0"
+  revision = "8991bc29aa16c548c550c7ff78260e27b9ab7c73"
+  version = "v1.1.1"
 
 [[projects]]
   digest = "1:0028cb19b2e4c3112225cd871870f2d9cf49b9b4276531f03438a88e94be86fe"
@@ -33,29 +33,12 @@
   revision = "792786c7400a136282c1664665ae0a8db921c6c2"
   version = "v1.0.0"
 
-[[projects]]
-  branch = "master"
-  digest = "1:f4e5276a3b356f4692107047fd2890f2fe534f4feeb6b1fd2f6dfbd87f1ccf54"
-  name = "github.com/xeipuuv/gojsonpointer"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "4e3ac2762d5f479393488629ee9370b50873b3a6"
-
-[[projects]]
-  branch = "master"
-  digest = "1:dc6a6c28ca45d38cfce9f7cb61681ee38c5b99ec1425339bfc1e1a7ba769c807"
-  name = "github.com/xeipuuv/gojsonreference"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "bd5ef7bd5415a7ac448318e64f11a24cd21e594b"
-
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/ActiveState/gojsonschema",
+    "github.com/ActiveState/json-tools/pkg/jsontidier",
     "github.com/autarch/testify/assert",
-    "github.com/xeipuuv/gojsonreference",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
