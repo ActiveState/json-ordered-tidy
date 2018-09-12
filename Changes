@@ -1,0 +1,8 @@
+v0.1.1 2018-09-12
+
+* Added a -stdout flag. When this flag is enabled the tidied output is printed
+  to stdout instead of editing the file in place.
+
+v0.1.0 2018-09-10
+
+* First proper release.
