@@ -34,6 +34,7 @@ func (f *indentFlag) String() string {
 }
 
 type program struct {
+	stdout    bool
 	check     bool
 	verbose   bool
 	debug     bool
@@ -49,6 +50,8 @@ func main() {
 	var config string
 	flag.StringVar(&config, "config", "", "A config file containing key ordering and array sorting specifications.")
 
+	var stdout bool
+	flag.BoolVar(&stdout, "stdout", false, "Instead of tidying file in place, output content to stdout. When this is flag is set the file contents will be printed even when it is already tidy. This flag is irrelevant when running in -check mode.")
 	var check bool
 	flag.BoolVar(&check, "check", false, "Run in check mode. In this mode we exit 0 if all files are already tidy, otherwise the exit status is 1.")
 	var verbose bool
@@ -72,7 +75,13 @@ func main() {
 		os.Exit(1)
 	}
 
+	if stdout && check {
+		usage("You passed both -stdout and -check, which do not make any sense together")
+		os.Exit(1)
+	}
+
 	p := program{
+		stdout:    stdout,
 		check:     check,
 		verbose:   verbose,
 		indent:    indent,
@@ -267,6 +276,10 @@ func (p *program) tidy(fi os.FileInfo, file string) {
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Could not tidy %s: %s\n", file, err)
 		return
+	}
+
+	if p.stdout {
+		fmt.Print(string(tidied))
 	}
 
 	if string(orig) != string(tidied) {
