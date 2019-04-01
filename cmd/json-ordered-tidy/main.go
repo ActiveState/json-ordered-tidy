@@ -109,6 +109,7 @@ func main() {
 					"  ** Using the value from your config file.\n\n",
 				indent.value, *c.Indent,
 			)
+			p.exit = 1
 		}
 	}
 
@@ -222,6 +223,7 @@ func (p *program) handlePath(path string) {
 	fi, err := os.Stat(path)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error stat'ing path %s: %s\n", path, err)
+		p.exit = 1
 		return
 	}
 	if fi.IsDir() {
@@ -235,12 +237,14 @@ func (p *program) recurseDir(dir string) {
 	f, err := os.Open(dir)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Could not open directory %s: %s\n", dir, err)
+		p.exit = 1
 		return
 	}
 
 	names, err := f.Readdirnames(0)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Could not read directory contents of %s: %s\n", dir, err)
+		p.exit = 1
 		return
 	}
 
@@ -257,6 +261,7 @@ func (p *program) tidy(fi os.FileInfo, file string) {
 	orig, err := ioutil.ReadFile(file)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Could not read file %s: %s\n", file, err)
+		p.exit = 1
 		return
 	}
 
@@ -275,6 +280,7 @@ func (p *program) tidy(fi os.FileInfo, file string) {
 	tidied, err := jt.TidyBytes(orig)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Could not tidy %s: %s\n", file, err)
+		p.exit = 1
 		return
 	}
 
@@ -290,6 +296,7 @@ func (p *program) tidy(fi os.FileInfo, file string) {
 			err = ioutil.WriteFile(file, tidied, fi.Mode().Perm())
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "Could not write tidied JSON to %s: %s\n", file, err)
+				p.exit = 1
 				return
 			}
 
