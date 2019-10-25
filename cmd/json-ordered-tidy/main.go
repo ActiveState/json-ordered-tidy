@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"github.com/ActiveState/json-tools/pkg/jsontidier"
+	"github.com/ActiveState/json-ordered-tidy/pkg/jsontidier"
 )
 
 type config struct {
