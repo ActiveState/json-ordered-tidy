@@ -3,7 +3,7 @@ package jsontidier
 import (
 	"testing"
 
-	"github.com/autarch/testify/assert"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestPreserveKeyOrde(t *testing.T) {
