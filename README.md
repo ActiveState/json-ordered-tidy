@@ -74,7 +74,7 @@ order you can provide an empty array for the key order.
 
 The "arraySort" key is an array of JSON Path expressions. Any array matching
 the expression will be sorted numerically or as strings, as
-appropriate. Strings are sorted in in case-insensitive alphanumeric order.
+appropriate. Strings are sorted in case-insensitive alphanumeric order.
 
 * -check - Run in check mode. In this mode we exit 0 if all files are already tidy, otherwise the exit status is 1.
 * -config - A config file containing key ordering and array sorting specifications.
