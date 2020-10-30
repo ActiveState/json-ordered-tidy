@@ -32,30 +32,30 @@ Here is an example config for JSON Schemas:
 
 ```json
 {
-   "keyOrder":{
-  	"$":[
-  	   "$schema",
-  	   "$id",
-  	   "title",
-  	   "description",
-  	   "type",
-  	   "additionalProperties",
-  	   "properties",
-  	   "required"
-  	],
-  	"$..properties.*":[
-  	   "$id",
-  	   "description",
-  	   "type",
-  	   "x-nullable",
-  	   "enum",
-  	   "format",
-  	   "additionalProperties",
-  	   "properties",
-  	   "required",
-  	   "examples"
-  	]
-   }
+    "keyOrder":{
+        "$":[
+           "$schema",
+           "$id",
+           "title",
+           "description",
+           "type",
+           "additionalProperties",
+           "properties",
+           "required"
+        ],
+        "$..properties.*":[
+           "$id",
+           "description",
+           "type",
+           "x-nullable",
+           "enum",
+           "format",
+           "additionalProperties",
+           "properties",
+           "required",
+           "examples"
+        ]
+    }
 }
 ```
 
